@@ -8,7 +8,6 @@ import {NextRequest} from "next/server";
 
 export async function POST (req: NextRequest){
     try {
-        console.log("++++++++++++++++++++++++++++", req.headers.get("content-type"))
         const formData = await req.formData();
         const cover = formData.get("cover") as File 
 
@@ -23,7 +22,6 @@ export async function POST (req: NextRequest){
             techStack: formData.get("techStack")
         }
 
-        console.log("++++++++++++++++++++++++++++", rowData)
 
 
         const data = projectsSchema.safeParse(rowData);
