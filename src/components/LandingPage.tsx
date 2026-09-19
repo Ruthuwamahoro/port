@@ -150,44 +150,6 @@ import { Badge } from "@/components/ui/badge";
 import { Navbar } from "./Navbar";
 import Link from "next/link";
 
-const mint = "text-[#8FEFC0]";
-const amber = "text-[#E3A867]";
-const sky = "text-[#7EB8E3]";
-const dim = "text-[#7A7D84]";
-
-const CODE_LINES: React.ReactNode[] = [
-  <>
-    <span className={mint}>type</span> <span className={sky}>Engineer</span> = {"{"}
-  </>,
-  <>&nbsp;&nbsp;role: <span className={sky}>string</span></>,
-  <>&nbsp;&nbsp;experience: <span className={sky}>string</span></>,
-  <>&nbsp;&nbsp;stack: <span className={sky}>string[]</span></>,
-  <>&nbsp;&nbsp;focus: <span className={sky}>string</span></>,
-  <>{"}"}</>,
-  <>&nbsp;</>,
-  <>
-    <span className={mint}>const</span> me: <span className={sky}>Engineer</span> = {"{"}
-  </>,
-  <>
-    &nbsp;&nbsp;role: <span className={amber}>&quot;Full Stack Developer&quot;</span>,
-  </>,
-  <>
-    &nbsp;&nbsp;experience: <span className={amber}>&quot;4 years&quot;</span>,
-  </>,
-  <>
-    &nbsp;&nbsp;stack: [<span className={amber}>&quot;TypeScript&quot;</span>,{" "}
-    <span className={amber}>&quot;React&quot;</span>, <span className={amber}>&quot;Next.js&quot;</span>],
-  </>,
-  <>
-    &nbsp;&nbsp;focus: <span className={amber}>&quot;clean code, real-world solutions&quot;</span>,
-  </>,
-  <>{"}"}</>,
-  <>&nbsp;</>,
-  <>
-    <span className={dim}>console</span>.log(
-    <span className={amber}>&quot;Talk is cheap. Show me the code.&quot;</span>)
-  </>,
-];
 
 export function Hero() {
   return (
@@ -336,40 +298,6 @@ export function Hero() {
           style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 200ms forwards" }}
           className="relative z-10 mx-auto aspect-square w-full max-w-[360px] sm:max-w-md md:max-w-none">
         </div>
-        {/* <div
-          data-fade-up
-          style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 200ms forwards" }}
-          className="relative z-10 mx-auto w-full max-w-[480px] transition-transform duration-300 hover:-translate-y-1"
-        >
-          <div className="overflow-hidden rounded-xl border border-white/10 bg-[#14171C] shadow-[0_30px_80px_-30px_rgba(0,0,0,0.7)]">
-            <div className="flex items-center gap-2 border-b border-white/10 bg-[#191C21] px-4 py-3">
-              <span className="h-[10px] w-[10px] rounded-full bg-[#E3A867]/70" />
-              <span className="h-[10px] w-[10px] rounded-full bg-[#8FEFC0]/70" />
-              <span className="h-[10px] w-[10px] rounded-full bg-[#7EB8E3]/70" />
-              <span className="ml-3 font-mono text-[12px] text-[#7A7D84]">engineer.ts</span>
-            </div>
-            <div className="overflow-x-auto px-5 py-5">
-              <pre className="font-mono text-[12.5px] leading-[1.9] text-[#ECEDEE]">
-                {CODE_LINES.map((line, i) => (
-                  <div
-                    key={i}
-                    data-line-in
-                    style={{
-                      opacity: 0,
-                      animation: `hero-line-in 0.4s ease-out ${520 + i * 45}ms forwards`,
-                    }}
-                    className="flex gap-4 whitespace-pre"
-                  >
-                    <span className="w-4 shrink-0 select-none text-right text-[#4A4D53]">
-                      {i + 1}
-                    </span>
-                    <span>{line}</span>
-                  </div>
-                ))}
-              </pre>
-            </div>
-          </div>
-        </div> */}
       </div>
     </section>
   );

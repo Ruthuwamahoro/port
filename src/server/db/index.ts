@@ -20,7 +20,7 @@ const db = new Proxy({} as ReturnType<typeof drizzle>, {
     get(target, prop, receiver){
         if(!dbInstance){
             dbInstance = initDB()
-        } return Reflect.get(dbInstance as Object, prop,receiver)
+        } return Reflect.get(dbInstance as object, prop,receiver)
     }
 })
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Github, Twitter, ChevronLeft, ChevronRight } from "lucide-react";
+import { Mail, Github, Twitter} from "lucide-react";
 import Link from "next/link";
 
 const navLinks = [

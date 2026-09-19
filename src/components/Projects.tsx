@@ -54,7 +54,7 @@ export default function Projects() {
 
   const { data, isPending, error } = useGetProjects();
 
-  const projects: Project[] = data?.data ?? [];
+  const projects: Project[] = useMemo(() => data?.data ?? [], [data]);
 
   const fadeUp = (delayMs: number): React.CSSProperties => ({
     opacity: isVisible ? 1 : 0,

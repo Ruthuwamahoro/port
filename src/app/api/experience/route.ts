@@ -3,9 +3,9 @@ import { experiences } from "@/server/db/schema";
 import { sendResponse } from "@/utils/Response";
 import { experienceSchema } from "@/validations/experience";
 import { count, desc } from "drizzle-orm";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
- export async function POST ( req: NextRequest, res: NextResponse){
+ export async function POST ( req: NextRequest){
     try {
 
         let body: unknown;
@@ -42,7 +42,7 @@ import { NextRequest, NextResponse } from "next/server";
 }
 const PAGE_SIZE = 4;
 
-export async function GET (req: NextRequest, res: NextResponse){
+export async function GET (req: NextRequest){
     try {
         const { searchParams } = new URL(req.url);
         const pageParam = parseInt(searchParams.get("page") ?? "1", 10);

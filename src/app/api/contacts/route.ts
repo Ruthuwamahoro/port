@@ -1,9 +1,9 @@
 import { sendResponse } from "@/utils/Response";
 import { sendMail } from "@/utils/sendMail";
 import { contactsSchema } from "@/validations/contacts";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
-export async function POST (req: NextRequest, res:NextResponse){
+export async function POST (req: NextRequest){
     try{
         let body: unknown;
         try{

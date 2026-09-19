@@ -1,7 +1,7 @@
 import db from "@/server/db";
 import { projects } from "@/server/db/schema";
 import { sendResponse } from "@/utils/Response";
-import { projectsSchema } from "@/validations/projects";
+import { projectsSchema, updateProjectSchema } from "@/validations/projects";
 import { eq } from "drizzle-orm";
 import { NextRequest } from "next/server";
 
@@ -24,7 +24,7 @@ export async function PATCH(req: NextRequest, {params}: {params: Promise<{id: st
             body = {}
         }
 
-        const validatedData = projectsSchema.partial().safeParse(body);
+        const validatedData = updateProjectSchema.partial().safeParse(body);
         if(!validatedData.success){
             const errors = Object.fromEntries(
                 Object.entries(validatedData.error.flatten().fieldErrors).map(([k,v]) => [k,v ?? []])
