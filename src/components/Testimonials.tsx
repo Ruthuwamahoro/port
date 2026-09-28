@@ -18,27 +18,27 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     quote:
-      "Ruth was a real pleasure to work with and we look forward to working with him again. Definitely someone you can trust with a project start to finish.",
+      "Ruth was a real pleasure to work with, and we'd gladly work with her again. She's someone you can trust with a project from start to finish.",
     rating: 5,
-    name: "Benjamin Bryant",
-    role: "VP & Co-Founder",
-    company: "Wiser.",
+    name: "Samuel Rebero",
+    role: "Project Lead",
+    company: "ALU",
   },
   {
     quote:
-      "She didn't just build what we asked for, she asked the right questions first. The handoff docs alone saved our team weeks.",
+      "She didn't just build what we asked for, she asked the right questions first. The handoff documentation alone saved our team weeks.",
     rating: 5,
-    name: "Raaid Hossain",
-    role: "Project Management",
-    company: "Focuslab",
+    name: "Paolo Paganin",
+    role: "Managing Director",
+    company: "Africhem Rwanda LTD",
   },
   {
     quote:
-      "Rare to find someone who cares equally about the code and the person using it. Support tickets dropped by half after launch.",
+      "It's rare to find someone who cares equally about the code and the person using it. Feedback from our users was noticeably better after launch.",
     rating: 5,
-    name: "Logan Cee",
-    role: "UI/UX Designer",
-    company: "LoganCee",
+    name: "Ineza David",
+    role: "Client",
+    company: "Norrsken",
   },
 ];
 
