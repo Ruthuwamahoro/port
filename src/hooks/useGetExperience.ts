@@ -7,7 +7,6 @@ export const useGetExperience = () => {
         queryFn: getExperiences,
     })
 
-    console.log('data from useGetExperiences hook', data)
 
     return {
         data,

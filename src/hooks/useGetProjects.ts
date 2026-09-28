@@ -7,8 +7,6 @@ export const useGetProjects = () => {
         queryFn: getProjects,
     })
 
-    console.log('data from useGetProjects hook', data)
-
     return {
         data,
         isPending,

@@ -50,10 +50,6 @@ export default function About() {
         aria-hidden
         className="grid-background pointer-events-none absolute inset-0 opacity-[0.04]"
       />
-      {/* <div
-        aria-hidden
-        className="about-float pointer-events-none absolute left-[6%] top-1/4 -z-0 h-[300px] w-[300px] rounded-full bg-[#9EF2C6]/10 blur-[110px]"
-      /> */}
 
       <div className="relative mx-auto grid w-full max-w-[1250px] grid-cols-1 gap-6 md:grid-cols-2 md:items-center md:gap-12">
         <div data-fade-up style={fadeUp(0)} className="flex flex-col justify-center xl:pl-6">

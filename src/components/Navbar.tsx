@@ -15,7 +15,6 @@ const navLinks = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
 
-  // Close the menu with Escape
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);

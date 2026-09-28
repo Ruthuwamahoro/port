@@ -6,7 +6,6 @@ import { Check, Copy, Send } from "lucide-react";
 
 const EMAIL = "ruthuwamahoro250@gmail.com";
 
-// Leave href empty to hide a link until you have the real URL.
 const socials = [
   { label: "GitHub", href: "https://github.com/Ruthuwamahoro" },
   { label: "LinkedIn", href: "" },

@@ -10,7 +10,7 @@ type Project = {
   id: string;
   title: string;
   description: string;
-  techStack: string; // comma-separated string from DB
+  techStack: string; 
   releaseTime: string;
   cover: string;
   livelink?: string;
@@ -19,7 +19,6 @@ type Project = {
 
 const ITEMS_PER_PAGE = 3;
 
-// helper: "next.js, tailwind, drizzle" -> ["next.js", "tailwind", "drizzle"]
 function parseTechStack(techStack?: string): string[] {
   if (!techStack) return [];
   return techStack
@@ -70,7 +69,6 @@ export default function Projects() {
   );
 
   const showFeatured = page === 0;
-  // BUG FIX: this was `projects` (the whole array). It should be a single project.
   const featured = showFeatured ? projects[0] : undefined;
 
   const gridItems = showFeatured ? currentItems.slice(1) : currentItems;
@@ -319,8 +317,7 @@ export default function Projects() {
 
         {totalPages > 1 && (
           <div
-            // data-fade-up
-            // style={fadeUp(150)}
+
             className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-between"
           >
             <p className="font-mono text-[12px] text-[#6C6E72]">
