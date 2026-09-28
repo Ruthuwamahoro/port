@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, FormEvent } from "react";
 import Link from "next/link";
 import { Check, Copy, Send } from "lucide-react";
+import { useSendContact } from "@/hooks/useContacts";
 
 const EMAIL = "ruthuwamahoro250@gmail.com";
 
@@ -13,7 +14,7 @@ const socials = [
   { label: "Twitter", href: "" },
 ].filter((s) => s.href);
 
-type Status = "idle" | "submitting" | "sent" | "error";
+const emptyForm = { name: "", email: "", message: "" };
 
 // text-base on mobile (16px) stops iOS Safari from zooming into the field on focus.
 const fieldClasses =
@@ -24,9 +25,11 @@ const labelClasses = "block font-mono text-[12px] text-[#A4A5A9]";
 export function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [status, setStatus] = useState<Status>("idle");
   const [copied, setCopied] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState(emptyForm);
+
+  const { mutate, isPending, isSuccess, isError, error, reset } =
+    useSendContact();
 
   useEffect(() => {
     const node = sectionRef.current;
@@ -59,16 +62,18 @@ export function Contact() {
     }
   }
 
-  async function handleSubmit(e: FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setStatus("submitting");
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 900));
-      setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
-    } catch {
-      setStatus("error");
-    }
+    if (isPending) return;
+    mutate(form, {
+      onSuccess: () => setForm(emptyForm),
+    });
+  }
+
+  // Clear the success/error message as soon as the person edits the form again.
+  function updateField(field: keyof typeof emptyForm, value: string) {
+    if (isSuccess || isError) reset();
+    setForm((prev) => ({ ...prev, [field]: value }));
   }
 
   return (
@@ -170,7 +175,7 @@ export function Contact() {
               autoComplete="name"
               placeholder="Jane Doe"
               value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              onChange={(e) => updateField("name", e.target.value)}
               className={fieldClasses}
             />
           </div>
@@ -187,7 +192,7 @@ export function Contact() {
               autoComplete="email"
               placeholder="jane@company.com"
               value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              onChange={(e) => updateField("email", e.target.value)}
               className={fieldClasses}
             />
           </div>
@@ -203,7 +208,7 @@ export function Contact() {
               rows={4}
               placeholder="A few lines is plenty."
               value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              onChange={(e) => updateField("message", e.target.value)}
               className={`${fieldClasses} resize-none`}
             />
           </div>
@@ -211,11 +216,11 @@ export function Contact() {
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
             <button
               type="submit"
-              disabled={status === "submitting"}
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#9EF2C6] px-6 py-3.5 font-mono text-[13px] font-bold text-[#10240F] transition-colors duration-200 hover:bg-[#8be3b6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D2F33] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:py-3"
+              disabled={isPending}
+              className="cursor-pointer group inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#9EF2C6] px-6 py-3.5 font-mono text-[13px] font-bold text-[#10240F] transition-colors duration-200 hover:bg-[#8be3b6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D2F33] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:py-3"
             >
-              {status === "submitting" ? "Sending..." : "Send message"}
-              {status !== "submitting" && (
+              {isPending ? "Sending..." : "Send message"}
+              {!isPending && (
                 <Send
                   className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none"
                   strokeWidth={2.5}
@@ -223,18 +228,17 @@ export function Contact() {
               )}
             </button>
 
-            <p
-              aria-live="polite"
-              className="font-mono text-[12.5px] sm:min-h-0"
-            >
-              {status === "sent" && (
+            <p aria-live="polite" className="font-mono text-[12.5px]">
+              {isSuccess && (
                 <span className="text-[#9EF2C6]">
                   Got it. I&apos;ll get back to you soon.
                 </span>
               )}
-              {status === "error" && (
+              {isError && (
                 <span className="text-[#F87171]">
-                  That didn&apos;t send. Try again, or email me directly.
+                  {error?.message
+                    ? `${error.message}. Try again, or email me directly.`
+                    : "That didn't send. Try again, or email me directly."}
                 </span>
               )}
             </p>
