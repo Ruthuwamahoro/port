@@ -72,7 +72,7 @@ export default function Testimonials() {
         className="pointer-events-none absolute right-1/2 top-0 -z-0 h-[380px] w-[380px] translate-x-1/2 rounded-full bg-[#9EF2C6]/10 blur-[120px]"
       />
 
-      <div className="relative mx-auto w-full max-w-[1020px]">
+      <div className="relative mx-auto w-full max-w-[1250px]">
         <div data-fade-up style={fadeUp(0)} className="text-left">
           <span className="font-mono text-[12.5px] font-bold uppercase tracking-[0.2em] text-[#9EF2C6]">
             what people are saying

@@ -21,9 +21,8 @@ function ExperienceSkeleton({ style }: { style?: React.CSSProperties }) {
       aria-busy="true"
       aria-label="Loading experience"
       style={style}
-      className="mt-10 animate-pulse overflow-hidden rounded-2xl bg-[#2D2F33] ring-1 ring-white/5"
+      className="mt-10 max-w-[1250px] animate-pulse overflow-hidden rounded-2xl bg-[#2D2F33] ring-1 ring-white/5"
     >
-      {/* Mobile tab pills */}
       <div className="flex gap-2 overflow-hidden border-b border-white/5 px-4 py-3 md:hidden">
         {[0, 1, 2].map((i) => (
           <div key={i} className="h-8 w-24 shrink-0 rounded-md bg-[#333438]" />
@@ -31,7 +30,6 @@ function ExperienceSkeleton({ style }: { style?: React.CSSProperties }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-[240px_1px_1fr]">
-        {/* Desktop sidebar */}
         <div className="hidden py-3 pl-3 pr-1 md:block">
           {[0, 1, 2].map((i) => (
             <div
@@ -47,7 +45,6 @@ function ExperienceSkeleton({ style }: { style?: React.CSSProperties }) {
 
         <div aria-hidden className="hidden bg-white/5 md:block" />
 
-        {/* Detail panel */}
         <div className="flex flex-col justify-center p-6 sm:p-8">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-full bg-[#333438]" />
@@ -144,11 +141,6 @@ useEffect(() => {
       <div
         aria-hidden
         className="grid-background pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#F8F8F8 1px, transparent 1px), linear-gradient(90deg, #F8F8F8 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
       />
 
       <div className="relative mx-auto w-full max-w-[1250px]">

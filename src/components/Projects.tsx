@@ -17,7 +17,7 @@ type Project = {
   githubLink?: string;
 };
 
-const ITEMS_PER_PAGE = 3;
+const ITEMS_PER_PAGE = 4;
 
 function parseTechStack(techStack?: string): string[] {
   if (!techStack) return [];
