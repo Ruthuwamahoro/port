@@ -48,9 +48,8 @@ export function Navbar() {
         {/* Desktop right side */}
         <div className="hidden items-center gap-6 font-mono text-sm lg:flex">
           <Link
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/ruth-uwamahoro"
             target="_blank"
-            rel="noreferrer"
             className="flex items-center gap-2 text-foreground/90 transition-colors hover:text-primary"
           >
             <Linkedin className="h-4 w-4" />
@@ -107,7 +106,7 @@ export function Navbar() {
           </nav>
           <div className="mt-5 flex items-center gap-6 font-mono text-sm">
             <Link
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/ruth-uwamahoro"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 text-foreground/90 hover:text-primary"

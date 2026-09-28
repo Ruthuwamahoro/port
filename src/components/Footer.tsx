@@ -12,9 +12,8 @@ const navLinks = [
 ];
 
 const socials = [
-  { icon: Github, label: "GitHub", href: "#" },
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Twitter, label: "Twitter", href: "#" },
+  { icon: Github, label: "GitHub", href: "https://github.com/Ruthuwamahoro" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/ruth-uwamahoro" }
 ];
 
 export function Footer() {

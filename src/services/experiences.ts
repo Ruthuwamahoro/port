@@ -1,11 +1,11 @@
 import axios from "axios";
 
 
-export async function getProjects (){
+export async function getExperiences (){
 
     try{
 
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/experience`)
 
         return response.data;
     } catch(error){

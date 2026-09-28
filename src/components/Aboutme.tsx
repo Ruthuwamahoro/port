@@ -55,18 +55,9 @@ export default function About() {
         className="about-float pointer-events-none absolute left-[6%] top-1/4 -z-0 h-[300px] w-[300px] rounded-full bg-[#9EF2C6]/10 blur-[110px]"
       /> */}
 
-      <div className="relative mx-auto grid w-full max-w-[1450px] grid-cols-1 gap-6 md:grid-cols-2 md:items-center md:gap-12">
+      <div className="relative mx-auto grid w-full max-w-[1250px] grid-cols-1 gap-6 md:grid-cols-2 md:items-center md:gap-12">
         <div data-fade-up style={fadeUp(0)} className="flex flex-col justify-center xl:pl-6">
           <div className="flex items-center gap-4">
-            {/* <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10">
-              <Image
-                src="/images/landingpage.jpeg"
-                alt="Portrait"
-                fill
-                sizes="56px"
-                className="object-cover zoom-in"
-              />
-            </div> */}
             <div>
               <span className="font-mono text-[12px] font-bold uppercase tracking-[0.2em] text-[#9EF2C6]">
                 Introduce

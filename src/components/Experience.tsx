@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Briefcase } from "lucide-react";
+import { useGetExperience } from "@/hooks/useGetExperience";
 
 type Role = {
   period: string;
@@ -11,49 +12,92 @@ type Role = {
   tags: string[];
 };
 
-const roles: Role[] = [
-  {
-    period: "2025 — Present",
-    title: "Senior Full Stack Developer",
-    company: "Northwind Labs",
-    description:
-      "Leading the rebuild of the core platform on Next.js and Postgres, mentoring two junior engineers, and owning delivery from architecture to deploy.",
-    tags: ["Next.js", "PostgreSQL", "AWS"],
-  },
-  {
-    period: "2023 — 2025",
-    title: "Full Stack Developer",
-    company: "Ridgeway Digital",
-    description:
-      "Built and shipped client applications end to end across fintech and logistics, from proposal through production support.",
-    tags: ["React", "Node.js", "Docker"],
-  },
-  {
-    period: "2022 — 2023",
-    title: "Frontend Developer",
-    company: "Fieldnote",
-    description:
-      "Owned the design system and rebuilt the dashboard for performance, cutting first-load time by more than half.",
-    tags: ["React", "TypeScript", "Tailwind"],
-  },
-  {
-    period: "2021 — 2022",
-    title: "Junior Developer",
-    company: "Freelance",
-    description:
-      "Took on small business sites and internal tools, learning to scope, estimate, and deliver on real deadlines.",
-    tags: ["JavaScript", "WordPress"],
-  },
-];
-
 const TAB_HEIGHT = 64;
+
+function ExperienceSkeleton({ style }: { style?: React.CSSProperties }) {
+  return (
+    <div
+      role="status"
+      aria-busy="true"
+      aria-label="Loading experience"
+      style={style}
+      className="mt-10 animate-pulse overflow-hidden rounded-2xl bg-[#2D2F33] ring-1 ring-white/5"
+    >
+      {/* Mobile tab pills */}
+      <div className="flex gap-2 overflow-hidden border-b border-white/5 px-4 py-3 md:hidden">
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="h-8 w-24 shrink-0 rounded-md bg-[#333438]" />
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-[240px_1px_1fr]">
+        {/* Desktop sidebar */}
+        <div className="hidden py-3 pl-3 pr-1 md:block">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              style={{ height: TAB_HEIGHT }}
+              className="flex flex-col justify-center gap-2 pl-5 pr-3"
+            >
+              <div className="h-3.5 w-28 rounded bg-[#333438]" />
+              <div className="h-2.5 w-20 rounded bg-[#333438]/70" />
+            </div>
+          ))}
+        </div>
+
+        <div aria-hidden className="hidden bg-white/5 md:block" />
+
+        {/* Detail panel */}
+        <div className="flex flex-col justify-center p-6 sm:p-8">
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-full bg-[#333438]" />
+            <div className="h-3 w-32 rounded bg-[#333438]" />
+          </div>
+
+          <div className="mt-4 h-5 w-64 max-w-full rounded bg-[#333438]" />
+          <div className="mt-2 h-3.5 w-40 rounded bg-[#333438]/70" />
+
+          <div className="mt-5 max-w-[560px] space-y-2.5">
+            <div className="h-3 w-full rounded bg-[#333438]/70" />
+            <div className="h-3 w-full rounded bg-[#333438]/70" />
+            <div className="h-3 w-4/5 rounded bg-[#333438]/70" />
+            <div className="h-3 w-2/3 rounded bg-[#333438]/70" />
+          </div>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {[64, 80, 56, 72].map((w, i) => (
+              <div
+                key={i}
+                style={{ width: w }}
+                className="h-6 rounded-md bg-[#333438]"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [active, setActive] = useState(0);
 
-  useEffect(() => {
+  const {
+        data,
+        isPending,
+        error
+    } = useGetExperience()
+
+const roles: Role[] = data?.data?.items ?? [];
+useEffect(() => {
+  if (active >= roles.length) {
+    setActive(0);
+  }
+}, [roles.length, active]);
+
+useEffect(() => {
     const node = sectionRef.current;
     if (!node) return;
 
@@ -77,7 +121,7 @@ export default function Experience() {
     transition: `opacity 0.6s ease-out ${delayMs}ms, transform 0.6s ease-out ${delayMs}ms`,
   });
 
-  const role = roles[active];
+  const role = roles[active] ?? roles[0];
 
   return (
     <section
@@ -120,8 +164,15 @@ export default function Experience() {
             Experience
           </h2>
         </div>
+        {isPending && <ExperienceSkeleton style={fadeUp(150)} />}
 
-        <div
+        {!isPending && error && (
+          <p className="mt-10 font-mono text-[13px] text-[#A4A5A9]">
+            Couldn&apos;t load experience.
+          </p>
+        )}
+        {!isPending && !error && role &&(
+                  <div
           data-fade-up
           style={fadeUp(150)}
           className="mt-10 overflow-hidden rounded-2xl bg-[#2D2F33] ring-1 ring-white/5"
@@ -167,7 +218,7 @@ export default function Experience() {
                   >
                     {r.company}
                   </span>
-                  <span className="font-mono text-[11px] text-[#6C6E72]">{r.period}</span>
+                  <span className="font-mono text-[11px] text-[#6C6E72]">{r?.period}</span>
                 </button>
               ))}
             </div>
@@ -207,6 +258,7 @@ export default function Experience() {
             </div>
           </div>
         </div>
+        )}
       </div>
     </section>
   );
