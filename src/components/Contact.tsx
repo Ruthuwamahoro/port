@@ -6,6 +6,7 @@ import { Check, Copy, Send } from "lucide-react";
 
 const EMAIL = "ruthuwamahoro250@gmail.com";
 
+// Leave href empty to hide a link until you have the real URL.
 const socials = [
   { label: "GitHub", href: "https://github.com/Ruthuwamahoro" },
   { label: "LinkedIn", href: "" },
@@ -14,8 +15,9 @@ const socials = [
 
 type Status = "idle" | "submitting" | "sent" | "error";
 
+// text-base on mobile (16px) stops iOS Safari from zooming into the field on focus.
 const fieldClasses =
-  "w-full rounded-none border-0 border-b border-white/75 bg-transparent px-0 py-2.5 font-mono text-[14px] text-[#F8F8F8] placeholder:text-[#6C6E72] outline-none transition-colors duration-200 focus:border-[#9EF2C6]";
+  "w-full min-w-0 rounded-none border-0 border-b border-white/75 bg-transparent px-0 py-3 font-mono text-base text-[#F8F8F8] placeholder:text-[#6C6E72] outline-none transition-colors duration-200 focus:border-[#9EF2C6] sm:py-2.5 sm:text-[14px]";
 
 const labelClasses = "block font-mono text-[12px] text-[#A4A5A9]";
 
@@ -73,7 +75,7 @@ export function Contact() {
     <section
       id="contacts"
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#2D2F33] px-5 py-16 sm:px-10 sm:py-24 lg:px-16 xl:px-[132px]"
+      className="relative overflow-hidden bg-[#2D2F33] px-4 py-12 min-[400px]:px-5 sm:px-10 sm:py-20 md:py-24 lg:px-16 xl:px-24 2xl:px-[132px]"
     >
       <div
         aria-hidden
@@ -81,30 +83,30 @@ export function Contact() {
       />
 
       <div
-        className={`relative mx-auto grid w-full max-w-[1450px] gap-14 transition-all duration-700 ease-out motion-reduce:transition-none lg:grid-cols-[5fr_6fr] lg:gap-24 ${
+        className={`relative mx-auto grid w-full max-w-[1250px] grid-cols-1 gap-12 transition-all duration-700 ease-out motion-reduce:transition-none sm:gap-14 lg:grid-cols-[5fr_6fr] lg:gap-16 xl:gap-24 ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
         } motion-reduce:translate-y-0 motion-reduce:opacity-100`}
       >
         {/* Left: the person */}
-        <div className="flex flex-col">
-          <h2 className="font-mono text-[34px] font-bold leading-[1.1] tracking-tight text-[#F8F8F8] sm:text-[44px]">
+        <div className="flex min-w-0 flex-col">
+          <h2 className="font-mono text-[clamp(1.875rem,8vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[#F8F8F8] lg:text-[clamp(2.25rem,3.4vw,3rem)]">
             Alright,
             <br />
             let&apos;s talk.
           </h2>
-          <p className="mt-6 max-w-[40ch] font-mono text-[14px] leading-[1.75] text-[#A4A5A9]">
+          <p className="mt-5 max-w-[40ch] font-mono text-[13px] leading-[1.75] text-[#A4A5A9] sm:mt-6 sm:text-[14px]">
             Have a project in mind, or just want to talk shop? My inbox is
             open. I usually reply within a day or two.
           </p>
 
-          <div className="mt-10">
+          <div className="mt-8 sm:mt-10">
             <p className={labelClasses}>Write to me</p>
             <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
               <Link
                 href={`mailto:${EMAIL}`}
-                className="group break-words font-mono text-[clamp(1rem,4.6vw,1.5rem)] font-bold text-[#9EF2C6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D2F33]"
+                className="group block max-w-full break-all font-mono text-[clamp(0.8rem,4.4vw,1.5rem)] font-bold text-[#9EF2C6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D2F33]"
               >
-                <span className="relative text-2xl">
+                <span className="relative inline-block max-w-full">
                   {EMAIL}
                   <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left bg-[#9EF2C6] transition-transform duration-300 ease-out group-hover:scale-x-0 group-focus-visible:scale-x-0 motion-reduce:transition-none" />
                   <span className="absolute -bottom-1 right-0 h-[2px] w-full origin-right scale-x-0 bg-[#9EF2C6] transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100 motion-reduce:transition-none" />
@@ -114,7 +116,7 @@ export function Contact() {
                 type="button"
                 onClick={copyEmail}
                 aria-label="Copy email address"
-                className="inline-flex h-9 items-center gap-1.5 rounded-md px-2.5 font-mono text-[12px] text-[#A4A5A9] transition-colors hover:text-[#F8F8F8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6]"
+                className="inline-flex h-10 items-center gap-1.5 rounded-md px-2.5 font-mono text-[12px] text-[#A4A5A9] transition-colors hover:text-[#F8F8F8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] sm:h-9"
               >
                 {copied ? (
                   <Check className="h-3.5 w-3.5 text-[#9EF2C6]" />
@@ -126,13 +128,13 @@ export function Contact() {
             </div>
           </div>
 
-          <dl className="mt-10 grid max-w-[420px] grid-cols-[auto_1fr] gap-x-8 gap-y-3 border-t border-white/10 pt-5 font-mono text-[13px]">
+          <dl className="mt-8 grid w-full max-w-[420px] grid-cols-[auto_1fr] gap-x-6 gap-y-3 border-t border-white/10 pt-5 font-mono text-[13px] sm:mt-10 sm:gap-x-8">
             <dt className="text-[#A4A5A9]">Based in</dt>
             <dd className="text-[#F8F8F8]">Kigali, Rwanda</dd>
             {socials.length > 0 && (
               <>
                 <dt className="text-[#A4A5A9]">Elsewhere</dt>
-                <dd className="flex flex-wrap gap-x-5 gap-y-1">
+                <dd className="flex flex-wrap gap-x-5 gap-y-2">
                   {socials.map(({ label, href }) => (
                     <Link
                       key={label}
@@ -153,7 +155,7 @@ export function Contact() {
         {/* Right: a quiet form, no card */}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-7 lg:pt-3"
+          className="flex w-full min-w-0 max-w-2xl flex-col gap-6 sm:gap-7 lg:max-w-none lg:pt-3"
           aria-label="Contact form"
         >
           <div>
@@ -206,11 +208,11 @@ export function Contact() {
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6">
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="group inline-flex items-center gap-2 rounded-md bg-[#9EF2C6] px-6 py-3 font-mono text-[13px] font-bold text-[#10240F] transition-colors duration-200 hover:bg-[#8be3b6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D2F33] disabled:cursor-not-allowed disabled:opacity-60"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#9EF2C6] px-6 py-3.5 font-mono text-[13px] font-bold text-[#10240F] transition-colors duration-200 hover:bg-[#8be3b6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D2F33] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:py-3"
             >
               {status === "submitting" ? "Sending..." : "Send message"}
               {status !== "submitting" && (
@@ -221,7 +223,10 @@ export function Contact() {
               )}
             </button>
 
-            <p aria-live="polite" className="font-mono text-[12.5px]">
+            <p
+              aria-live="polite"
+              className="font-mono text-[12.5px] sm:min-h-0"
+            >
               {status === "sent" && (
                 <span className="text-[#9EF2C6]">
                   Got it. I&apos;ll get back to you soon.

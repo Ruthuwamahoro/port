@@ -177,7 +177,7 @@ export default function Projects() {
         className="pointer-events-none absolute left-[4%] top-1/4 -z-0 h-[380px] w-[380px] rounded-full bg-[#9EF2C6]/10 blur-[120px]"
       />
 
-      <div className="relative mx-auto w-full max-w-[1450px]">
+      <div className="relative mx-auto w-full max-w-[1250px]">
         <div
           className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end"
         >

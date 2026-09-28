@@ -150,12 +150,8 @@ useEffect(() => {
           backgroundSize: "44px 44px",
         }}
       />
-      {/* <div
-        aria-hidden
-        className="pointer-events-none absolute left-[8%] bottom-0 -z-0 h-[340px] w-[340px] rounded-full bg-[#9EF2C6]/10 blur-[120px]"
-      /> */}
 
-      <div className="relative mx-auto w-full max-w-[1450px]">
+      <div className="relative mx-auto w-full max-w-[1250px]">
         <div data-fade-up style={fadeUp(0)} className="max-w-[560px]">
           <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#9EF2C6]">
             Where I&apos;ve worked

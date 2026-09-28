@@ -48,7 +48,7 @@ export default function Skills() {
       />
 
       <div
-        className={`relative mx-auto grid w-full max-w-8xl gap-8 transition-all duration-700 ease-out motion-reduce:transition-none lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-16 ${
+        className={`relative mx-auto grid w-full max-w-[1200px] gap-8 transition-all duration-700 ease-out motion-reduce:transition-none lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-16 ${
           isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
         } motion-reduce:translate-y-0 motion-reduce:opacity-100`}
       >
