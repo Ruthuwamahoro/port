@@ -99,17 +99,17 @@ export default function Experience() {
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        className="grid-background pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             "linear-gradient(#F8F8F8 1px, transparent 1px), linear-gradient(90deg, #F8F8F8 1px, transparent 1px)",
           backgroundSize: "44px 44px",
         }}
       />
-      <div
+      {/* <div
         aria-hidden
         className="pointer-events-none absolute left-[8%] bottom-0 -z-0 h-[340px] w-[340px] rounded-full bg-[#9EF2C6]/10 blur-[120px]"
-      />
+      /> */}
 
       <div className="relative mx-auto w-full max-w-[1450px]">
         <div data-fade-up style={fadeUp(0)} className="max-w-[560px]">
@@ -126,7 +126,7 @@ export default function Experience() {
           style={fadeUp(150)}
           className="mt-10 overflow-hidden rounded-2xl bg-[#2D2F33] ring-1 ring-white/5"
         >
-          {/* Mobile: horizontal scrollable tab pills */}
+          
           <div className="flex gap-2 overflow-x-auto border-b border-white/5 px-4 py-3 md:hidden">
             {roles.map((r, i) => (
               <button
@@ -144,7 +144,6 @@ export default function Experience() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-[240px_1px_1fr]">
-            {/* Desktop: vertical tab list with sliding indicator */}
             <div className="relative hidden py-3 pl-3 pr-1 md:block">
               <span
                 aria-hidden
@@ -175,7 +174,7 @@ export default function Experience() {
 
             <div aria-hidden className="hidden bg-white/5 md:block" />
 
-            {/* Detail panel */}
+           
             <div key={active} className="exp-panel flex flex-col justify-center p-6 sm:p-8">
               <div className="flex items-center gap-2">
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#333438] text-[#9EF2C6] ring-1 ring-white/5">

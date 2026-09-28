@@ -102,12 +102,7 @@ export default function Testimonials() {
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#F8F8F8 1px, transparent 1px), linear-gradient(90deg, #F8F8F8 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
+        className="grid-background pointer-events-none absolute inset-0 opacity-[0.05]"
       />
       <div
         aria-hidden

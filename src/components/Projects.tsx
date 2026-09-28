@@ -85,7 +85,6 @@ export default function Projects() {
     return (
       <section className="relative overflow-hidden bg-[#1F2124] px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
         <div className="relative mx-auto w-full max-w-[1450px] animate-pulse">
-          {/* header skeleton */}
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div className="max-w-[560px] space-y-3">
               <div className="h-3 w-32 rounded bg-[#2D2F33]" />
@@ -173,12 +172,7 @@ export default function Projects() {
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#F8F8F8 1px, transparent 1px), linear-gradient(90deg, #F8F8F8 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
+        className="grid-background pointer-events-none absolute inset-0 opacity-[0.04]"
       />
       <div
         aria-hidden

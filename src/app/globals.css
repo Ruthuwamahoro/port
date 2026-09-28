@@ -3,7 +3,12 @@
 @import "shadcn/tailwind.css";
 
 
-
+.grid-background {
+  background-image:
+    linear-gradient(#F8F8F8 1px, transparent 1px),
+    linear-gradient(90deg, #F8F8F8 1px, transparent 1px);
+  background-size: 44px 44px;
+}
 body {
   background-color: #2D2F33;
   color: #F8F8F8;

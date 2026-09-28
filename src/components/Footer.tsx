@@ -24,12 +24,7 @@ export function Footer() {
     <footer className="relative overflow-hidden bg-[#1A1B1E] px-6 pt-14 pb-8 sm:px-10 lg:px-16">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#F8F8F8 1px, transparent 1px), linear-gradient(90deg, #F8F8F8 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
+        className="grid-background pointer-events-none absolute inset-0 opacity-[0.04]"
       />
 
       <div className="relative mx-auto flex w-full max-w-[1450px] flex-col gap-8">

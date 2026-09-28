@@ -1,302 +1,163 @@
+"use client";
 
-// import Image from "next/image";
-// import { Badge } from "@/components/ui/badge";
-// import { Navbar } from "./Navbar";
-// import Link from "next/link";
-
-// export function Hero() {
-//   return (
-//     <section className="relative overflow-hidden bg-[#2D2F33]">
-
-//       <style>{`
-//         @keyframes hero-float {
-//           0%, 100% { transform: translateY(0px); }
-//           50% { transform: translateY(-10px); }
-//         }
-//         @keyframes hero-pulse-dot {
-//           0%, 100% { opacity: 1; transform: scale(1); }
-//           50% { opacity: 0.4; transform: scale(1.4); }
-//         }
-//         @keyframes hero-fade-up {
-//           from { opacity: 0; transform: translateY(14px); }
-//           to { opacity: 1; transform: translateY(0); }
-//         }
-//         @keyframes hero-blink-caret {
-//           0%, 100% { opacity: 1; }
-//           50% { opacity: 0; }
-//         }
-//         .hero-float { animation: hero-float 4s ease-in-out infinite; }
-//         .hero-float-slow { animation: hero-float 6s ease-in-out infinite; }
-//         .hero-pulse-dot { animation: hero-pulse-dot 2s ease-in-out infinite; }
-//         .hero-blink-caret { animation: hero-blink-caret 1s step-end infinite; }
-//         @media (prefers-reduced-motion: reduce) {
-//           .hero-float, .hero-float-slow, .hero-pulse-dot, .hero-blink-caret {
-//             animation: none;
-//           }
-//           [data-fade-up] {
-//             animation: none !important;
-//             opacity: 1 !important;
-//             transform: none !important;
-//           }
-//         }
-//       `}</style>
-
-//       <div
-//         aria-hidden
-//         className="pointer-events-none absolute inset-0 opacity-[0.05]"
-//         style={{
-//           backgroundImage:
-//             "linear-gradient(#F8F8F8 1px, transparent 1px), linear-gradient(90deg, #F8F8F8 1px, transparent 1px)",
-//           backgroundSize: "44px 44px",
-//         }}
-//       />
-//       <div
-//         aria-hidden
-//         className="pointer-events-none absolute right-0 top-1/3 -z-0 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-[#9EF2C6]/10 blur-[120px]"
-//       />
-
-//       <Navbar />
-
-//       <div className="relative mx-auto grid w-full max-w-[1450px] grid-cols-1 items-center gap-14 px-6 pb-16 pt-6 sm:px-10 md:grid-cols-2 lg:px-16 xl:gap-10 xl:pb-24 xl:pt-[26px]">
-//         <div className="relative z-10 flex flex-col xl:pl-[132px]">
-//           <Badge
-//             data-fade-up
-//             style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 0ms forwards" }}
-//             className="w-fit rounded-md bg-[#9EF2C6] px-4 py-[7px] text-[13px] font-semibold leading-none text-[#10240F]"
-//           >
-//             Full Stack Developer
-//           </Badge>
-
-//           <h1 data-fade-up
-//             style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 120ms forwards" }}
-//             className="mt-9 font-mono text-[34px] font-bold leading-[1.16] tracking-tight text-[#F8F8F8] sm:text-[42px] xl:text-[44px]">
-//             Talk is cheap.
-//             <br />
-//             Show me the code
-//             <span
-//               aria-hidden
-//               className="ml-1 inline-block h-[0.9em] w-[3px] translate-y-[2px] hero-blink-caret bg-[#9EF2C6] align-middle"
-//             />
-//           </h1>
-
-//           <p data-fade-up
-//             style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 240ms forwards" }}
-//             className="mt-10 max-w-[320px] font-mono text-[13.5px] leading-[1.5] text-[#A4A5A9]">
-//             Full-stack developer focused on clean code, great experiences, and real-world solutions.
-//           </p>
-
-//           <Link
-//             href="#contacts"
-//             data-fade-up
-//             style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 360ms forwards" }}
-//             className="group mt-[46px] w-fit font-mono text-[13.5px] font-bold uppercase tracking-wide text-[#9EF2C6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D2F33]"
-//           >
-//             <span className="relative">
-//               Let&apos;s chat!
-//               <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-100 bg-[#9EF2C6] transition-transform duration-300 ease-out group-hover:scale-x-0" />
-//               <span className="absolute -bottom-1 right-0 h-[2px] w-full origin-right scale-x-0 bg-[#9EF2C6] transition-transform duration-300 ease-out group-hover:scale-x-100" />
-//             </span>
-//           </Link>
-
-//           <div data-fade-up
-//             style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 480ms forwards" }}
-//             className="relative left-[-100px] mt-16 flex items-center gap-10 sm:gap-14">
-//             <div className="flex items-baseline gap-3">
-//               <span className="font-mono text-[32px] font-bold leading-none text-[#F8F8F8] sm:text-[36px]">
-//                 4
-//               </span>
-//               <span className="font-mono text-[11px] font-medium uppercase leading-[1.5] tracking-wide text-[#A4A5A9]">
-//                 Years
-//                 <br />
-//                 Experience
-//               </span>
-//             </div>
-//             <div className="flex items-baseline gap-3">
-//               <span className="font-mono text-[32px] font-bold leading-none text-[#F8F8F8] sm:text-[36px]">
-//                 13+
-//               </span>
-//               <span className="font-mono text-[11px] font-medium uppercase leading-[1.5] tracking-wide text-[#A4A5A9]">
-//                 Projects Completed
-//                 <br />
-//                 In 18 Countries
-//               </span>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div data-fade-up
-//           style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 200ms forwards" }}
-//           className="relative z-10 mx-auto aspect-square w-full max-w-[360px] sm:max-w-md md:max-w-none">
-
-//           <div className="relative mx-auto aspect-square w-full overflow-hidden rounded-full bg-[#26282B]/60 ring-1 ring-white/5">
-//             <Image
-//               src="/images/main.png"
-//               alt="Graduation portrait"
-//               fill
-//               priority
-//               quality={100}
-//               sizes="(min-width: 1280px) 500px, (min-width: 768px) 40vw, 86vw"
-//               className="object-cover object-[50%_8%]"
-//             />
-//           </div>
-
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Navbar } from "./Navbar";
-import Link from "next/link";
 
+const HIDDEN = "-999px";
+const SPOTLIGHT =
+  "radial-gradient(circle 170px at var(--mx) var(--my), #000 30%, transparent 100%)";
 
-export function Hero() {
+export default function Hero() {
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  function handlePointerMove(e: React.PointerEvent<HTMLElement>) {
+    if (e.pointerType === "touch") return;
+    const stage = stageRef.current;
+    if (!stage) return;
+    const rect = stage.getBoundingClientRect();
+    stage.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    stage.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  }
+
+  function handlePointerLeave() {
+    const stage = stageRef.current;
+    if (!stage) return;
+    stage.style.setProperty("--mx", HIDDEN);
+    stage.style.setProperty("--my", HIDDEN);
+  }
+
   return (
-    <section className="relative overflow-hidden bg-[#2D2F33]">
-
+    <section
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      className="relative isolate flex min-h-svh flex-col overflow-hidden bg-[#2D2F33]"
+    >
       <style>{`
-        @keyframes hero-float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
+        @keyframes hero-rise {
+          from { opacity: 0; transform: translateY(105%); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes hero-pulse-dot {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(1.4); }
+        @keyframes hero-fade {
+          from { opacity: 0; transform: translateY(8px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes hero-fade-up {
-          from { opacity: 0; transform: translateY(14px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes hero-blink-caret {
+        @keyframes hero-caret {
           0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
+          50%      { opacity: 0; }
         }
-        @keyframes hero-video-zoom {
-          0% { transform: scale(1.08); }
-          50% { transform: scale(1.16); }
-          100% { transform: scale(1.08); }
-        }
-        .hero-float { animation: hero-float 4s ease-in-out infinite; }
-        .hero-float-slow { animation: hero-float 6s ease-in-out infinite; }
-        .hero-pulse-dot { animation: hero-pulse-dot 2s ease-in-out infinite; }
-        .hero-blink-caret { animation: hero-blink-caret 1s step-end infinite; }
-        .hero-video-bg { animation: hero-video-zoom 20s ease-in-out infinite; }
+        .hero-rise  { opacity: 0; animation: hero-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) forwards; }
+        .hero-fade  { opacity: 0; animation: hero-fade 0.7s ease-out var(--d, 0ms) forwards; }
+        .hero-caret { animation: hero-caret 1s step-end infinite; }
         @media (prefers-reduced-motion: reduce) {
-          .hero-float, .hero-float-slow, .hero-pulse-dot, .hero-blink-caret, .hero-video-bg {
+          .hero-rise, .hero-fade, .hero-caret {
             animation: none;
-          }
-          [data-fade-up] {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
+            opacity: 1;
+            transform: none;
           }
         }
       `}</style>
 
-      {/* Video background */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <video
-          className="hero-video-bg h-full w-full object-cover"
-          src="/images/myVideo.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
+      {/* Portrait */}
+      <div
+        ref={stageRef}
+        style={{ "--mx": HIDDEN, "--my": HIDDEN } as React.CSSProperties}
+        className="absolute inset-y-0 right-0 z-0 w-full sm:w-[62%]"
+      >
+        <Image
+          src="/images/aboutus.jpeg"
+          alt="Ruth Uwamahoro"
+          fill
+          priority
+          sizes="(min-width: 640px) 62vw, 100vw"
+          className="object-cover object-[center_15%] grayscale contrast-110 brightness-90"
         />
-        {/* Dark overlay so text stays readable over the moving footage */}
-        {/* {/* <div className="absolute inset-0 bg-[#2D2F33]/70" /> */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2D2F33] via-[#2D2F33]/60 to-transparent" /> 
+        <Image
+          src="/images/aboutus.jpeg"
+          alt=""
+          aria-hidden
+          fill
+          sizes="(min-width: 640px) 62vw, 100vw"
+          className="object-cover object-[center_15%]"
+          style={{ maskImage: SPOTLIGHT, WebkitMaskImage: SPOTLIGHT }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#2D2F33] via-[#2D2F33]/60 to-[#2D2F33]/10 sm:bg-gradient-to-r sm:from-[#2D2F33] sm:via-[#2D2F33]/25 sm:to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 hidden h-40 bg-gradient-to-t from-[#2D2F33] to-transparent sm:block" />
       </div>
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(#F8F8F8 1px, transparent 1px), linear-gradient(90deg, #F8F8F8 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-0 top-1/3 z-[1] h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-[#9EF2C6]/10 blur-[120px]"
+        className="grid-background pointer-events-none absolute inset-0 z-[1] opacity-[0.05]"
       />
 
-      <div className="relative z-10">
+      <div className="relative z-20">
         <Navbar />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1450px] grid-cols-1 items-center gap-14 px-6 pb-16 pt-6 sm:px-10 md:grid-cols-2 lg:px-16 xl:gap-10 xl:pb-24 xl:pt-[26px]">
-        <div className="relative z-10 flex flex-col xl:pl-[132px]">
-          <Badge
-            data-fade-up
-            style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 0ms forwards" }}
-            className="w-fit rounded-md bg-[#9EF2C6] px-4 py-[7px] text-[13px] font-semibold leading-none text-[#10240F]"
+      <div className="pointer-events-none relative z-10 mx-auto flex w-full max-w-[1450px] flex-1 flex-col justify-end px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-10 sm:justify-center sm:px-10 sm:pb-10 sm:pt-6 lg:px-16 xl:pl-[132px]">
+        <div className="pointer-events-auto flex w-full flex-col">
+          <div
+            className="hero-fade flex flex-wrap items-center gap-x-4 gap-y-2"
+            style={{ "--d": "0ms" } as React.CSSProperties}
           >
-            Full Stack Developer
-          </Badge>
+            <Badge className="w-fit rounded-md bg-[#9EF2C6] px-3.5 py-1.5 text-[13px] font-semibold leading-none text-[#10240F]">
+              Full Stack Developer
+            </Badge>
+          </div>
 
-          <h1 data-fade-up
-            style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 120ms forwards" }}
-            className="mt-9 font-mono text-[34px] font-bold leading-[1.16] tracking-tight text-[#F8F8F8] sm:text-[42px] xl:text-[44px]">
-            Talk is cheap.
-            <br />
-            Show me the code
-            <span
-              aria-hidden
-              className="ml-1 inline-block h-[0.9em] w-[3px] translate-y-[2px] hero-blink-caret bg-[#9EF2C6] align-middle"
-            />
+          <h1 className="mt-6 font-mono text-[clamp(1.6rem,8.4vw,3.25rem)] font-bold leading-[1.04] tracking-tight sm:mt-8 sm:text-[clamp(2rem,5.6vw,5.25rem)]">
+            <span className="block overflow-hidden pb-[0.12em]">
+              <span
+                className="hero-rise block text-[#A4A5A9]"
+                style={{ "--d": "150ms" } as React.CSSProperties}
+              >
+                Talk is cheap.
+              </span>
+            </span>
+            <span className="block overflow-hidden pb-[0.12em]">
+              <span
+                className="hero-rise block text-[#F8F8F8]"
+                style={{ "--d": "350ms" } as React.CSSProperties}
+              >
+                Show me the code
+                <span
+                  aria-hidden
+                  className="hero-caret ml-1 inline-block h-[0.85em] w-[0.09em] translate-y-[0.06em] bg-[#9EF2C6] align-middle"
+                />
+              </span>
+            </span>
           </h1>
 
-          <p data-fade-up
-            style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 240ms forwards" }}
-            className="mt-10 max-w-[320px] font-mono text-[13.5px] leading-[1.5] text-[#A4A5A9]">
-            Full-stack developer focused on clean code, great experiences, and real-world solutions.
+          <p
+            className="hero-fade mt-6 max-w-[34ch] font-mono text-[14px] leading-[1.6] text-[#F8F8F8]/80 sm:mt-8 sm:text-[15px] 2xl:text-base"
+            style={{ "--d": "700ms" } as React.CSSProperties}
+          >
+            I build for the web and mobile from Rwanda. My favourite part is when
+            someone actually uses the thing.
           </p>
 
           <Link
             href="#contacts"
-            data-fade-up
-            style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 360ms forwards" }}
-            className="group mt-[46px] w-fit font-mono text-[13.5px] font-bold uppercase tracking-wide text-[#9EF2C6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D2F33]"
+            className="hero-fade group mt-6 w-fit py-2 font-mono text-[14px] font-bold uppercase tracking-wide text-[#9EF2C6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9EF2C6] focus-visible:ring-offset-2 focus-visible:ring-offset-[#2D2F33] sm:mt-7 2xl:text-base"
+            style={{ "--d": "850ms" } as React.CSSProperties}
           >
             <span className="relative">
-              Let&apos;s chat!
-              <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-100 bg-[#9EF2C6] transition-transform duration-300 ease-out group-hover:scale-x-0" />
-              <span className="absolute -bottom-1 right-0 h-[2px] w-full origin-right scale-x-0 bg-[#9EF2C6] transition-transform duration-300 ease-out group-hover:scale-x-100" />
+              Let&apos;s talk
+              <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left bg-[#9EF2C6] transition-transform duration-300 ease-out group-hover:scale-x-0 group-focus-visible:scale-x-0" />
+              <span className="absolute -bottom-1 right-0 h-[2px] w-full origin-right scale-x-0 bg-[#9EF2C6] transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
             </span>
           </Link>
 
-          <div data-fade-up
-            style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 480ms forwards" }}
-            className="relative left-[-100px] mt-16 flex items-center gap-10 sm:gap-14">
-            <div className="flex items-baseline gap-3">
-              <span className="font-mono text-[32px] font-bold leading-none text-[#F8F8F8] sm:text-[36px]">
-                4
-              </span>
-              <span className="font-mono text-[11px] font-medium uppercase leading-[1.5] tracking-wide text-[#A4A5A9]">
-                Years
-                <br />
-                Experience
-              </span>
-            </div>
-            <div className="flex items-baseline gap-3">
-              <span className="font-mono text-[32px] font-bold leading-none text-[#F8F8F8] sm:text-[36px]">
-                20+
-              </span>
-              <span className="font-mono text-[11px] font-medium uppercase leading-[1.5] tracking-wide text-[#A4A5A9]">
-                Projects Completed
-                <br />
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div data-fade-up
-          style={{ opacity: 0, animation: "hero-fade-up 0.6s ease-out 200ms forwards" }}
-          className="relative z-10 mx-auto aspect-square w-full max-w-[360px] sm:max-w-md md:max-w-none">
+          <ul
+            className="hero-fade mt-8 flex flex-wrap gap-x-8 gap-y-1 border-t border-[#F8F8F8]/10 pt-4 font-mono text-[12px] text-[#A4A5A9] sm:mt-12 sm:gap-x-10 sm:max-w-[560px] lg:mt-16 2xl:text-[13px] [@media(max-height:500px)]:hidden"
+            style={{ "--d": "1000ms" } as React.CSSProperties}
+          >
+            <li>Kigali, Rwanda</li>
+            <li>4 years of building</li>
+            <li>20+ projects shipped</li>
+          </ul>
         </div>
       </div>
     </section>

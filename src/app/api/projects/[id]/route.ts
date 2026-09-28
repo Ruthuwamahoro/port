@@ -1,7 +1,7 @@
 import db from "@/server/db";
 import { projects } from "@/server/db/schema";
 import { sendResponse } from "@/utils/Response";
-import { projectsSchema, updateProjectSchema } from "@/validations/projects";
+import { updateProjectSchema } from "@/validations/projects";
 import { eq } from "drizzle-orm";
 import { NextRequest } from "next/server";
 
