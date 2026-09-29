@@ -142,7 +142,7 @@ export default function Projects() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#1F2124] px-6 py-20 sm:px-10 sm:py-28 lg:px-16"
+      className="relative overflow-hidden bg-[#1F2124] px-6 py-20 sm:px-10 sm:py-10 lg:px-16"
       id="projects"
     >
       <style>{`
