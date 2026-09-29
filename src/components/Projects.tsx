@@ -55,12 +55,6 @@ export default function Projects() {
 
   const projects: Project[] = useMemo(() => data?.data ?? [], [data]);
 
-  const fadeUp = (delayMs: number): React.CSSProperties => ({
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? "translateY(0)" : "translateY(16px)",
-    transition: `opacity 0.6s ease-out ${delayMs}ms, transform 0.6s ease-out ${delayMs}ms`,
-  });
-
   const totalPages = Math.max(1, Math.ceil(projects.length / ITEMS_PER_PAGE));
   const start = page * ITEMS_PER_PAGE;
   const currentItems = useMemo(

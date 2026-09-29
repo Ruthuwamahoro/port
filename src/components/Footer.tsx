@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Twitter, ArrowUp } from "lucide-react";
+import { Github, Linkedin, ArrowUp } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },

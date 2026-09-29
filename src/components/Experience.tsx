@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Briefcase } from "lucide-react";
+import { Briefcase, ChevronRight, ChevronLeft } from "lucide-react";
 import { useGetExperience } from "@/hooks/useGetExperience";
+
 
 type Role = {
   period: string;
@@ -14,6 +15,51 @@ type Role = {
 
 const TAB_HEIGHT = 64;
 
+function Pager({
+  page,
+  totalPages,
+  onChange,
+  disabled,
+}: {
+  page: number;
+  totalPages: number;
+  onChange: (page: number) => void;
+  disabled?: boolean;
+}) {
+  if (totalPages <= 1) return null;
+
+  const btn =
+    "flex h-8 w-8 items-center justify-center rounded-md bg-[#333438] text-[#F8F8F8] ring-1 ring-white/5 transition-colors hover:bg-[#3a3b40] disabled:cursor-not-allowed disabled:opacity-40";
+
+  return (
+    <nav
+      aria-label="Experience pagination"
+      className="flex items-center justify-between border-t border-white/5 px-4 py-3"
+    >
+      <span className="font-mono text-[11px] text-[#6C6E72]">
+        Page {page} of {totalPages}
+      </span>
+      <div className="flex gap-2">
+        <button
+          aria-label="Previous page"
+          className={btn}
+          disabled={page <= 1 || disabled}
+          onClick={() => onChange(page - 1)}
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </button>
+        <button
+          aria-label="Next page"
+          className={btn}
+          disabled={page >= totalPages || disabled}
+          onClick={() => onChange(page + 1)}
+        >
+          <ChevronRight className="h-4 w-4" />
+        </button>
+      </div>
+    </nav>
+  );
+}
 function ExperienceSkeleton({ style }: { style?: React.CSSProperties }) {
   return (
     <div
@@ -80,14 +126,19 @@ export default function Experience() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [active, setActive] = useState(0);
+  const [page, setPage] = useState(1);
 
-  const {
-        data,
-        isPending,
-        error
-    } = useGetExperience()
+
+  const { data, isPending, error, isPlaceholderData } = useGetExperience(page);
+
 
 const roles: Role[] = data?.data?.items ?? [];
+const totalPages: number = data?.data?.pagination?.totalPages ?? 1;
+
+const goToPage = (p: number) => {
+  setPage(p);
+  setActive(0); 
+};
 useEffect(() => {
   if (active >= roles.length) {
     setActive(0);
@@ -144,7 +195,7 @@ useEffect(() => {
       />
 
       <div className="relative mx-auto w-full max-w-[1250px]">
-        <div data-fade-up style={fadeUp(0)} className="max-w-[560px]">
+        <div  className="max-w-[560px]">
           <span className="font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#9EF2C6]">
             Where I&apos;ve worked
           </span>
@@ -247,6 +298,12 @@ useEffect(() => {
           </div>
         </div>
         )}
+        <Pager
+          page={page}
+          totalPages={totalPages}
+          onChange={goToPage}
+          disabled={isPlaceholderData}
+        />
       </div>
     </section>
   );
