@@ -72,6 +72,9 @@ export default function Projects() {
     setDirection(next > page ? "next" : "prev");
     setPage(next);
   }
+  if(!isPending && (error || projects.length == 0)){
+    return null
+  };
 
   if (isPending) {
     return (
